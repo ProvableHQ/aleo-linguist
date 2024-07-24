@@ -3,6 +3,11 @@ import path from "path";
 import plist from "plist";
 
 (async () => {
+  const prepareJSONforPlist = (json) => {
+    delete json["extension"];
+    delete json["scope"];
+    return json;
+  } 
   const expectationsFileJSON = path.join(
     __dirname,
     "../syntaxes/Aleo.tmLanguage.json"
@@ -25,7 +30,7 @@ import plist from "plist";
     tmLanguageExpectationFile,
     { encoding: "utf8" }
   );
-  const plistContent = plist.build(JSON.parse(content));
+  const plistContent = plist.build(prepareJSONforPlist(JSON.parse(content)));
   await fs.promises.writeFile(
     expectationsFileJSON,
     content,
