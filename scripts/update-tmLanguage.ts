@@ -30,10 +30,11 @@ import plist from "plist";
     tmLanguageExpectationFile,
     { encoding: "utf8" }
   );
-  const plistContent = plist.build(prepareJSONforPlist(JSON.parse(content)));
+  const updatedContent = prepareJSONforPlist(JSON.parse(content));
+  const plistContent = plist.build(updatedContent);
   await fs.promises.writeFile(
     expectationsFileJSON,
-    content,
+    JSON.stringify(updatedContent, null, 2),
   );
   await fs.promises.writeFile(
     expectationsFilePlist,
