@@ -12,19 +12,22 @@
       "include": "#line_comment"
     },
     {
-      "include": "#keywords"
+      "include": "#strings"
     },
     {
-      "include": "#finalize"
-    },
-    {
-      "include": "#qualifiers"
-    },
-    {
-      "include": "#visibility"
+      "include": "#identifier_literal"
     },
     {
       "include": "#instructions"
+    },
+    {
+      "include": "#special_operands"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#visibility"
     },
     {
       "include": "#base_register"
@@ -36,72 +39,57 @@
       "include": "#signature"
     },
     {
-      "include": "#arithmetic_type"
+      "include": "#literal_type"
     },
     {
-      "include": "#boolean_type"
+      "include": "#register_type"
     },
     {
       "include": "#boolean_literal"
     },
     {
-      "include": "#strings"
+      "include": "#numeric_literal"
     },
     {
-      "include": "#integer_literal"
-    },
-    {
-      "include": "#storage_type"
+      "include": "#punctuation"
     }
   ],
   "repository": {
     "keywords": {
       "name": "keyword.control.aleo",
-      "match": "\\b(function|program|as|by|interface|closure|into|import)\\b"
-    },
-    "finalize": {
-      "name": "storage.type.finalize.aleo",
-      "match": "\\b(finalize|mapping|async|await|self)\\b"
-    },
-    "qualifiers": {
-      "name": "qualifiers.aleo",
-      "match": "\\(|\\)"
+      "match": "\\b(as|closure|constructor|finalize|function|import|input|into|key|mapping|output|owner|program|record|self|storage|struct|to|transition|value|view|with)\\b"
     },
     "visibility": {
       "name": "storage.modifier.aleo",
-      "match": "\\b(constant|public|private|record|struct|aleo|future)\\b"
+      "match": "\\b(const|constant|private|public)\\b"
     },
     "instructions": {
       "name": "entity.other.instruction.aleo",
-      "match": "\\b(abs\\.w|abs|add\\.w|add|and|assert\\.eq|assert\\.neq|block\\.height|branch\\.eq|branch\\.neq|call|cast\\.lossy|cast|commit\\.bhp256|commit\\.bhp512|commit\\.bhp768|commit\\.bhp1024|commit\\.ped64|commit\\.ped128|div\\.w|div|double|gt|gte|hash\\.bhp256|hash\\.bhp512|hash\\.bhp768|hash\\.bhp1024|hash\\.ped64|hash\\.ped128|hash\\.psd2|hash\\.psd4|hash\\.psd8|hash\\.sha3_256|hash\\.sha3_384|hash\\.sha3_512|hash\\.keccak256|hash\\.keccak384|hash\\.keccak512|hash_many\\.psd2|hash_many\\.psd4|hash_many\\.psd8|inv|input|is\\.eq|is\\.neq|lt|lte|key|mod|mul\\.w|mul|nand|neg|nor|not|or|output|position|pow\\.w|pow|rand\\.chacha|rem\\.w|rem|shl\\.w|shl|shr\\.w|shr|sqrt|sub\\.w|sub|square|ternary|value|xor|get\\.or_use|get|set|contains|remove|sign\\.verify)\\b"
+      "match": "\\b(abs(?:\\.w)?|add(?:\\.w)?|and|assert\\.(?:eq|neq)|async|await|branch\\.(?:eq|neq)|call(?:\\.dynamic)?|cast(?:\\.lossy)?|commit\\.(?:bhp(?:256|512|768|1024)|ped(?:64|128))(?:\\.raw)?|contains(?:\\.dynamic)?|deserialize\\.bits(?:\\.raw)?|div(?:\\.w)?|double|ecdsa\\.verify\\.(?:digest(?:\\.eth)?|(?:keccak(?:256|384|512)|sha3_(?:256|384|512))(?:\\.(?:eth|raw))?)|get(?:\\.record\\.dynamic|\\.or_use(?:\\.dynamic)?|\\.dynamic)?|gt|gte|hash\\.(?:(?:bhp(?:256|512|768|1024)|ped(?:64|128)|psd(?:2|4|8))(?:\\.raw)?|(?:keccak(?:256|384|512)|sha3_(?:256|384|512))(?:\\.native)?(?:\\.raw)?)|hash_many\\.psd(?:2|4|8)|inv|is\\.(?:eq|neq)|lt|lte|mod|mul(?:\\.w)?|nand|neg|nor|not|or|position|pow(?:\\.w)?|rand\\.chacha|rem(?:\\.w)?|remove|serialize\\.bits(?:\\.raw)?|set|shl(?:\\.w)?|shr(?:\\.w)?|sign\\.verify|snark\\.verify(?:\\.batch)?|sqrt|square|sub(?:\\.w)?|ternary|xor)(?![A-Za-z0-9_.])"
+    },
+    "special_operands": {
+      "name": "constant.language.aleo",
+      "match": "\\b(aleo::GENERATOR_POWERS(?:\\[[0-9][0-9_]*u32\\])?|aleo::GENERATOR|block\\.(?:height|timestamp)|group::GEN|network\\.id|self\\.(?:caller|signer)|(?:[A-Za-z][A-Za-z0-9_]*\\.aleo/)?(?:[A-Za-z][A-Za-z0-9_]*/)?checksum|(?:[A-Za-z][A-Za-z0-9_]*\\.aleo/)?(?:edition|program_owner))(?![A-Za-z0-9_.])"
     },
     "base_register": {
-      "name": "constant.base.register.aleo",
-      "match": "r[0-9]+"
+      "name": "variable.other.register.aleo",
+      "match": "\\br[0-9]+\\b"
     },
     "address": {
       "name": "constant.other.address.aleo",
-      "match": "\\baleo1[a-z0-9]*"
+      "match": "\\baleo1[qpzry9x8gf2tvdw0s3jn54khce6mua7l_]+\\b"
     },
     "signature": {
       "name": "constant.other.signature.aleo",
-      "match": "\\bsign1[a-z0-9]*"
+      "match": "\\bsign1[qpzry9x8gf2tvdw0s3jn54khce6mua7l_]+\\b"
     },
-    "arithmetic_type": {
-      "name": "storage.type.core.aleo",
-      "match": "\\b(field|group|address|signature|scalar|u8|u16|u32|u64|u128|i8|i16|i32|i64|i128)"
+    "literal_type": {
+      "name": "storage.type.primitive.aleo",
+      "match": "\\b(address|boolean|field|group|i8|i16|i32|i64|i128|identifier|scalar|signature|string|u8|u16|u32|u64|u128)\\b"
     },
-    "integer_literal": {
-      "name": "constant.numeric.integer.aleo",
-      "match": "\\b([0-9][0-9_]*)([ui](8|16|32|64|128))?\\b"
-    },
-    "storage_type": {
-      "name": "constant.storage.type.aleo",
-      "match": "\\b(([0-9][0-9_]*)(group|field|scalar))"
-    },
-    "boolean_type": {
-      "name": "constant.boolean.type.aleo",
-      "match": "\\b(boolean)\\b"
+    "register_type": {
+      "name": "storage.type.register.aleo",
+      "match": "\\b(dynamic\\.(?:future|record)|future)\\b"
     },
     "boolean_literal": {
       "name": "constant.language.boolean.aleo",
@@ -118,14 +106,24 @@
         }
       ]
     },
+    "identifier_literal": {
+      "name": "string.quoted.single.identifier.aleo",
+      "match": "'[A-Za-z][A-Za-z0-9_]*'"
+    },
+    "numeric_literal": {
+      "name": "constant.numeric.aleo",
+      "match": "(?<![A-Za-z0-9_])(?:-[0-9][0-9_]*(?:i(?:8|16|32|64|128)|field|group|scalar)|[0-9][0-9_]*(?:[iu](?:8|16|32|64|128)|field|group|scalar))(?![A-Za-z0-9_])"
+    },
+    "punctuation": {
+      "name": "punctuation.aleo",
+      "match": "[()\\[\\]:;,]"
+    },
     "block_comment": {
-      "comment": "Block comment",
       "name": "comment.block.aleo",
       "begin": "/\\*",
       "end": "\\*/"
     },
     "line_comment": {
-      "comment": "Single-line comment",
       "name": "comment.line.double-slash.aleo",
       "begin": "//",
       "end": "$"

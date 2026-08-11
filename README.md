@@ -1,9 +1,13 @@
-# Aleo Instructions Grammars for GitHub Linguist Library
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-red.svg)](./LICENSE)
+# Aleo Instructions grammar
 
-TextMate grammar files for Aleo language. 
+This repository contains the TextMate grammar for Aleo Instructions.
 
-Latest version of the grammar can be also found as a [VSCode extension](https://marketplace.visualstudio.com/items?itemName=aleohq.leo-extension).
-- [TextMate-compatible grammar](https://github.com/ProvableHQ/aleo-linguist/tree/master/syntaxes)
-- [Language documentation](https://developer.aleo.org/aleo/language/)
+The JSON file is the source file. Run `yarn build:grammar` after you change it. This command updates the plist file that GitHub Linguist uses.
 
+Run `yarn test` to make sure that both grammar files contain the same data and that current Aleo syntax is present.
+
+- [TextMate grammar files](./syntaxes)
+- [Aleo Instructions documentation](https://developer.aleo.org/guides/aleo/tooling/)
+- [snarkVM source](https://github.com/ProvableHQ/snarkVM)
+
+This repository uses the Apache License 2.0. See [LICENSE](./LICENSE).

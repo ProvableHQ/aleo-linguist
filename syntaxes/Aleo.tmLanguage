@@ -22,23 +22,27 @@
       </dict>
       <dict>
         <key>include</key>
-        <string>#keywords</string>
+        <string>#strings</string>
       </dict>
       <dict>
         <key>include</key>
-        <string>#finalize</string>
-      </dict>
-      <dict>
-        <key>include</key>
-        <string>#qualifiers</string>
-      </dict>
-      <dict>
-        <key>include</key>
-        <string>#visibility</string>
+        <string>#identifier_literal</string>
       </dict>
       <dict>
         <key>include</key>
         <string>#instructions</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#special_operands</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#keywords</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#visibility</string>
       </dict>
       <dict>
         <key>include</key>
@@ -54,11 +58,11 @@
       </dict>
       <dict>
         <key>include</key>
-        <string>#arithmetic_type</string>
+        <string>#literal_type</string>
       </dict>
       <dict>
         <key>include</key>
-        <string>#boolean_type</string>
+        <string>#register_type</string>
       </dict>
       <dict>
         <key>include</key>
@@ -66,15 +70,11 @@
       </dict>
       <dict>
         <key>include</key>
-        <string>#strings</string>
+        <string>#numeric_literal</string>
       </dict>
       <dict>
         <key>include</key>
-        <string>#integer_literal</string>
-      </dict>
-      <dict>
-        <key>include</key>
-        <string>#storage_type</string>
+        <string>#punctuation</string>
       </dict>
     </array>
     <key>repository</key>
@@ -84,84 +84,63 @@
         <key>name</key>
         <string>keyword.control.aleo</string>
         <key>match</key>
-        <string>\b(function|program|as|by|interface|closure|into|import)\b</string>
-      </dict>
-      <key>finalize</key>
-      <dict>
-        <key>name</key>
-        <string>storage.type.finalize.aleo</string>
-        <key>match</key>
-        <string>\b(finalize|mapping|async|await|self)\b</string>
-      </dict>
-      <key>qualifiers</key>
-      <dict>
-        <key>name</key>
-        <string>qualifiers.aleo</string>
-        <key>match</key>
-        <string>\(|\)</string>
+        <string>\b(as|closure|constructor|finalize|function|import|input|into|key|mapping|output|owner|program|record|self|storage|struct|to|transition|value|view|with)\b</string>
       </dict>
       <key>visibility</key>
       <dict>
         <key>name</key>
         <string>storage.modifier.aleo</string>
         <key>match</key>
-        <string>\b(constant|public|private|record|struct|aleo|future)\b</string>
+        <string>\b(const|constant|private|public)\b</string>
       </dict>
       <key>instructions</key>
       <dict>
         <key>name</key>
         <string>entity.other.instruction.aleo</string>
         <key>match</key>
-        <string>\b(abs\.w|abs|add\.w|add|and|assert\.eq|assert\.neq|block\.height|branch\.eq|branch\.neq|call|cast\.lossy|cast|commit\.bhp256|commit\.bhp512|commit\.bhp768|commit\.bhp1024|commit\.ped64|commit\.ped128|div\.w|div|double|gt|gte|hash\.bhp256|hash\.bhp512|hash\.bhp768|hash\.bhp1024|hash\.ped64|hash\.ped128|hash\.psd2|hash\.psd4|hash\.psd8|hash\.sha3_256|hash\.sha3_384|hash\.sha3_512|hash\.keccak256|hash\.keccak384|hash\.keccak512|hash_many\.psd2|hash_many\.psd4|hash_many\.psd8|inv|input|is\.eq|is\.neq|lt|lte|key|mod|mul\.w|mul|nand|neg|nor|not|or|output|position|pow\.w|pow|rand\.chacha|rem\.w|rem|shl\.w|shl|shr\.w|shr|sqrt|sub\.w|sub|square|ternary|value|xor|get\.or_use|get|set|contains|remove|sign\.verify)\b</string>
+        <string>\b(abs(?:\.w)?|add(?:\.w)?|and|assert\.(?:eq|neq)|async|await|branch\.(?:eq|neq)|call(?:\.dynamic)?|cast(?:\.lossy)?|commit\.(?:bhp(?:256|512|768|1024)|ped(?:64|128))(?:\.raw)?|contains(?:\.dynamic)?|deserialize\.bits(?:\.raw)?|div(?:\.w)?|double|ecdsa\.verify\.(?:digest(?:\.eth)?|(?:keccak(?:256|384|512)|sha3_(?:256|384|512))(?:\.(?:eth|raw))?)|get(?:\.record\.dynamic|\.or_use(?:\.dynamic)?|\.dynamic)?|gt|gte|hash\.(?:(?:bhp(?:256|512|768|1024)|ped(?:64|128)|psd(?:2|4|8))(?:\.raw)?|(?:keccak(?:256|384|512)|sha3_(?:256|384|512))(?:\.native)?(?:\.raw)?)|hash_many\.psd(?:2|4|8)|inv|is\.(?:eq|neq)|lt|lte|mod|mul(?:\.w)?|nand|neg|nor|not|or|position|pow(?:\.w)?|rand\.chacha|rem(?:\.w)?|remove|serialize\.bits(?:\.raw)?|set|shl(?:\.w)?|shr(?:\.w)?|sign\.verify|snark\.verify(?:\.batch)?|sqrt|square|sub(?:\.w)?|ternary|xor)(?![A-Za-z0-9_.])</string>
+      </dict>
+      <key>special_operands</key>
+      <dict>
+        <key>name</key>
+        <string>constant.language.aleo</string>
+        <key>match</key>
+        <string>\b(aleo::GENERATOR_POWERS(?:\[[0-9][0-9_]*u32\])?|aleo::GENERATOR|block\.(?:height|timestamp)|group::GEN|network\.id|self\.(?:caller|signer)|(?:[A-Za-z][A-Za-z0-9_]*\.aleo/)?(?:[A-Za-z][A-Za-z0-9_]*/)?checksum|(?:[A-Za-z][A-Za-z0-9_]*\.aleo/)?(?:edition|program_owner))(?![A-Za-z0-9_.])</string>
       </dict>
       <key>base_register</key>
       <dict>
         <key>name</key>
-        <string>constant.base.register.aleo</string>
+        <string>variable.other.register.aleo</string>
         <key>match</key>
-        <string>r[0-9]+</string>
+        <string>\br[0-9]+\b</string>
       </dict>
       <key>address</key>
       <dict>
         <key>name</key>
         <string>constant.other.address.aleo</string>
         <key>match</key>
-        <string>\baleo1[a-z0-9]*</string>
+        <string>\baleo1[qpzry9x8gf2tvdw0s3jn54khce6mua7l_]+\b</string>
       </dict>
       <key>signature</key>
       <dict>
         <key>name</key>
         <string>constant.other.signature.aleo</string>
         <key>match</key>
-        <string>\bsign1[a-z0-9]*</string>
+        <string>\bsign1[qpzry9x8gf2tvdw0s3jn54khce6mua7l_]+\b</string>
       </dict>
-      <key>arithmetic_type</key>
+      <key>literal_type</key>
       <dict>
         <key>name</key>
-        <string>storage.type.core.aleo</string>
+        <string>storage.type.primitive.aleo</string>
         <key>match</key>
-        <string>\b(field|group|address|signature|scalar|u8|u16|u32|u64|u128|i8|i16|i32|i64|i128)</string>
+        <string>\b(address|boolean|field|group|i8|i16|i32|i64|i128|identifier|scalar|signature|string|u8|u16|u32|u64|u128)\b</string>
       </dict>
-      <key>integer_literal</key>
+      <key>register_type</key>
       <dict>
         <key>name</key>
-        <string>constant.numeric.integer.aleo</string>
+        <string>storage.type.register.aleo</string>
         <key>match</key>
-        <string>\b([0-9][0-9_]*)([ui](8|16|32|64|128))?\b</string>
-      </dict>
-      <key>storage_type</key>
-      <dict>
-        <key>name</key>
-        <string>constant.storage.type.aleo</string>
-        <key>match</key>
-        <string>\b(([0-9][0-9_]*)(group|field|scalar))</string>
-      </dict>
-      <key>boolean_type</key>
-      <dict>
-        <key>name</key>
-        <string>constant.boolean.type.aleo</string>
-        <key>match</key>
-        <string>\b(boolean)\b</string>
+        <string>\b(dynamic\.(?:future|record)|future)\b</string>
       </dict>
       <key>boolean_literal</key>
       <dict>
@@ -188,10 +167,29 @@
           </dict>
         </array>
       </dict>
+      <key>identifier_literal</key>
+      <dict>
+        <key>name</key>
+        <string>string.quoted.single.identifier.aleo</string>
+        <key>match</key>
+        <string>'[A-Za-z][A-Za-z0-9_]*'</string>
+      </dict>
+      <key>numeric_literal</key>
+      <dict>
+        <key>name</key>
+        <string>constant.numeric.aleo</string>
+        <key>match</key>
+        <string>(?&lt;![A-Za-z0-9_])(?:-[0-9][0-9_]*(?:i(?:8|16|32|64|128)|field|group|scalar)|[0-9][0-9_]*(?:[iu](?:8|16|32|64|128)|field|group|scalar))(?![A-Za-z0-9_])</string>
+      </dict>
+      <key>punctuation</key>
+      <dict>
+        <key>name</key>
+        <string>punctuation.aleo</string>
+        <key>match</key>
+        <string>[()\[\]:;,]</string>
+      </dict>
       <key>block_comment</key>
       <dict>
-        <key>comment</key>
-        <string>Block comment</string>
         <key>name</key>
         <string>comment.block.aleo</string>
         <key>begin</key>
@@ -201,8 +199,6 @@
       </dict>
       <key>line_comment</key>
       <dict>
-        <key>comment</key>
-        <string>Single-line comment</string>
         <key>name</key>
         <string>comment.line.double-slash.aleo</string>
         <key>begin</key>
